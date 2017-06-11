@@ -5,14 +5,36 @@
 # The Inspec reference, with examples and extensive documentation, can be
 # found at http://inspec.io/docs/reference/resources/
 
-unless os.windows?
-  # This is an example test, replace with your own test.
-  describe user('root'), :skip do
-    it { should exist }
-  end
+# firewalld service is enabled and running
+describe service('firewalld') do
+  it { should be_installed }
+  it { should be_enabled }
+  it { should be_running }
 end
 
-# This is an example test, replace it with your own test.
-describe port(80), :skip do
-  it { should_not be_listening }
+# iptables is configured
+describe iptables(chain: 'INPUT_direct') do
+  it { should have_rule('-A INPUT_direct -p tcp -m tcp -m multiport --dports 2049 -m comment --comment nfs-tcp -j ACCEPT') }
+  it { should have_rule('-A INPUT_direct -p udp -m multiport --dports 2049 -m comment --comment nfs-udp -j ACCEPT') }
+  it { should have_rule('-A INPUT_direct -p tcp -m tcp -m multiport --dports 111 -m comment --comment rpcbind-sunrpc-tcp -j ACCEPT') }
+  it { should have_rule('-A INPUT_direct -p udp -m multiport --dports 111 -m comment --comment rpcbind-sunrpc-udp -j ACCEPT') }
+end
+
+# nfs-server service is enabled and running
+describe service('nfs-server') do
+  it { should be_installed }
+  it { should be_enabled }
+  it { should be_running }
+end
+
+# rpcbind service is enabled and running
+describe service('rpcbind') do
+  it { should be_installed }
+  it { should be_enabled }
+  it { should be_running }
+end
+
+describe file('/etc/exports') do
+  it { should exist }
+  its('content') { should match '/tmp    127.0.0.1(rw,sync,no_root_squash,no_subtree_check)' }
 end
