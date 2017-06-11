@@ -18,6 +18,7 @@ describe iptables(chain: 'INPUT_direct') do
   it { should have_rule('-A INPUT_direct -p udp -m multiport --dports 2049 -m comment --comment nfs-udp -j ACCEPT') }
   it { should have_rule('-A INPUT_direct -p tcp -m tcp -m multiport --dports 111 -m comment --comment rpcbind-sunrpc-tcp -j ACCEPT') }
   it { should have_rule('-A INPUT_direct -p udp -m multiport --dports 111 -m comment --comment rpcbind-sunrpc-udp -j ACCEPT') }
+  it { should have_rule('-A INPUT_direct -p tcp -m tcp -m multiport --dports 22 -m comment --comment ssh -j ACCEPT') }  
 end
 
 # nfs-server service is enabled and running
