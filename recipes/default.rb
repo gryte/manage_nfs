@@ -40,3 +40,20 @@ firewall_rule 'ssh' do
   port 22
   command :allow
 end
+
+# install nfs utilities
+package 'nfs-utils' do
+  action :upgrade
+  notifies :restart, 'service[nfs-server]'
+  notifies :restart, 'service[rpcbind]'
+end
+
+# nfs-server service
+service 'nfs-server' do
+  action :enable
+end
+
+# rpcbind service
+service 'rpcbind' do
+  action :enable
+end
