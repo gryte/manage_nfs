@@ -11,3 +11,4 @@ issues_url 'https://github.com/gryte/manage_nfs/issues' if respond_to?(:issues_u
 source_url 'https://github.com/gryte/manage_nfs' if respond_to?(:source_url)
 
 depends 'firewall', '~> 2.6.1'
+depends 'chef-vault', '~> 3.0.0'

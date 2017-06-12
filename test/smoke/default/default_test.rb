@@ -35,7 +35,13 @@ describe service('rpcbind') do
   it { should be_running }
 end
 
+# exports file has desired contents listed
 describe file('/etc/exports') do
   it { should exist }
-  its('content') { should match '/tmp    127.0.0.1(rw,sync,no_root_squash,no_subtree_check)' }
+  its('content') { should match '.*/tmp    127.0.0.1(rw,sync,no_root_squash,no_subtree_check)*' }
+end
+
+# exports command outputs exported filesystem(s) per /etc/exports file
+describe command('sudo exportfs') do
+  its('stdout') { should eq "/tmp          \t127.0.0.1\n" }
 end

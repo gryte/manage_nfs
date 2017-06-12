@@ -4,6 +4,9 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
+# include chef-vault recicpe
+include_recipe 'chef-vault'
+
 # enable platform default firewall
 firewall 'default' do
   action :install
@@ -56,4 +59,24 @@ end
 # rpcbind service
 service 'rpcbind' do
   action :enable
+end
+
+# manage exports file
+template '/etc/exports' do
+  only_if { node['nfs_exports']['config'] == true }
+  source 'exports.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+  variables(
+    env: node.chef_environment,
+    nfs_server: chef_vault_item('nfs_exports', node['nfs_exports']['nfs_server'])
+  )
+  notifies :run, 'execute[exportfs]'
+end
+
+# run exportfs command
+execute 'exportfs' do
+  command 'sudo exportfs -a'
+  action :nothing
 end

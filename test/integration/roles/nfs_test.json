@@ -1,0 +1,18 @@
+{
+  "name": "nfs_test",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+
+  },
+  "description": "The test role for systems that serve nfs",
+  "run_list": [
+    "recipe[manage_nfs::default]"
+  ],
+  "override_attributes": {
+    "nfs_exports": {
+      "config": true,
+      "nfs_server": "nfs_test"
+    }
+  }
+}
