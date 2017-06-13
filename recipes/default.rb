@@ -72,5 +72,11 @@ template '/etc/exports' do
     env: node.chef_environment,
     nfs_server: chef_vault_item('nfs_exports', node['nfs_exports']['nfs_server'])
   )
-  notifies :restart, 'service[nfs-server]'
+  notifies :run, 'execute[exportfs_all]'
+end
+
+# export file systems in exportfs file
+execute 'exportfs_all' do
+  command 'sudo exportfs -a'
+  action :nothing
 end
