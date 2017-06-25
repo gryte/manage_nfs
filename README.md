@@ -18,6 +18,7 @@ In order to manage the `/etc/exports` file, the attribute `['nfs_exports']['conf
 
 The json layout is as follows:
 - The parent item starts with the **environment**
+  - The recipe assumes the local server is assigned to a matching environment in the chef server
   - This allows for *production* and *test* groups of file systems and servers
 - The next child item is the **path**
   - Each environment can have multiple _file systems_ or paths specified to be exported as nfs shares
