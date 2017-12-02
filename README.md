@@ -35,7 +35,7 @@ The json layout is as follows:
       "server1"
     ],
     "path2": [
-      "server3, server4"
+      "server3", "server4"
     ]
   },
   "test": {
@@ -54,7 +54,7 @@ The json layout is as follows:
 ```
 # This file is managed by Chef and should not be modified otherwise.
 
-/tmp 127.0.0.1(rw,sync,no_root_squash,no_subtree_check)
+/tmp 127.0.0.1(rw,sync,no_root_squash,no_subtree_check) 127.0.0.2(rw,sync,no_root_squash,no_subtree_check)
 /var 127.0.0.1(rw,sync,no_root_squash,no_subtree_check)
 ```
 

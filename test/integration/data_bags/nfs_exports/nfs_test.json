@@ -1,15 +1,17 @@
 {
   "id": "nfs_test",
   "prod": {
-    "encrypted_data": "8qXxh/cB8sQ2coM8o8EQPCRI6mcFQ/ceaIvkCOZ7sU5a8ucpmu723/hB9c7I\nSOuQPTNSBBRdk0+7xhSQ8pLhFvqG7vJpNJEpi5DSXbkVcOc=\n",
-    "iv": "UFh3AH+mcJQ70T6o5LeZQA==\n",
-    "version": 1,
-    "cipher": "aes-256-cbc"
+    "encrypted_data": "pC4+MjZvyVa9YELiu3CrSJgLWDe+JkRmwmrkGXsJMXpFg/Ap3IajtX68KXoK\n6+y4L7WBlsCgnxCDtMkvP2LMlwgzHPUc4r6ZR6fA0A==\n",
+    "iv": "6dAUcu0BNMc5XicY\n",
+    "auth_tag": "wbE12+LBlF1LUEoSjhnqCA==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
   },
   "test": {
-    "encrypted_data": "boDqneBtiLy4R8byCJ485TsJ9Ls2JmviW9H2rMIM2OFpXExEBGJ7O7RPi8eT\noNM2ygxD7MbUyn4ZdG9Yie7DM4FTZxYZ0PuVEybgAfGyCZY=\n",
-    "iv": "e7R/nclw5iA0BC5/xtZN8g==\n",
-    "version": 1,
-    "cipher": "aes-256-cbc"
+    "encrypted_data": "jFjih0IWfPydaa8plz6ysffgahig23JjKVstN1+Qz7nga+SsKIhFFsslBkRX\nRS8S4DafOYAGcarXwWjZHb4XkW+wH3Yndpu+\n",
+    "iv": "spXAiElnWOz7DuAs\n",
+    "auth_tag": "vPeBeX2T8D5JDurZZKe0gw==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
   }
 }
