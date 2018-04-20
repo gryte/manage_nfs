@@ -8,7 +8,7 @@ end
 
 desc 'Run foodcritic in current directory'
 task :foodcritic do
-  sh 'foodcritic .'
+  sh 'foodcritic . --tags ~FC078'
 end
 
 desc 'Knife upload manage_nfs cookbook to test environment'
@@ -36,5 +36,5 @@ task remove_test: [:deletenode_test, :deleteclient_test]
 
 desc 'Bootstrap test server'
 task bootstrap_test: [:upload_test] do
-  sh 'knife bootstrap 192.168.1.234 -E test -N testserver -r manage_nfs --sudo --ssh-user test --ssh-password test --use-sudo-password --bootstrap-version 12.19.36'
+  sh 'knife bootstrap 192.168.1.234 -E test -N testserver -r manage_nfs --sudo --ssh-user test --ssh-password test --use-sudo-password --bootstrap-version 14.0.202'
 end
