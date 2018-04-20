@@ -8,7 +8,8 @@ provisioner:
   # For example:
   #   always_update_cookbooks: <%= !ENV['CI'] %>
   always_update_cookbooks: true
-  require_chef_omnibus: "12"
+  product_name: chef
+  product_version: 14
 
   environments_path: 'test/integration/environments'
   roles_path: 'test/integration/roles'

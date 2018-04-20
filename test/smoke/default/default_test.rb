@@ -38,7 +38,7 @@ end
 # exports file has desired contents listed
 describe file('/etc/exports') do
   it { should exist }
-  #its('content') { should match ".*/tmp 127.0.0.1(rw,sync,no_root_squash,no_subtree_check)\s127.0.0.2(rw,sync,no_root_squash,no_subtree_check)*" }
+  # its('content') { should match ".*/tmp 127.0.0.1(rw,sync,no_root_squash,no_subtree_check)\s127.0.0.2(rw,sync,no_root_squash,no_subtree_check)*" }
   its('content') { should match '.*/tmp 127.0.0.1(rw,sync,no_root_squash,no_subtree_check)*' }
   its('content') { should match '.*/var 127.0.0.1(rw,sync,no_root_squash,no_subtree_check)*' }
 end
